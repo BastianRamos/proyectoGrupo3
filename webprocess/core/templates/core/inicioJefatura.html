@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'core/css/styleJefatura.css' %}">
+	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
+	<title>Panel de Tareas</title>
+</head>
+<body>
+	<div class="principal">
+		<div class="wrap">
+			<form class="formulario" action="">
+				<label for="nombreTareaInput" id="nombreTarea">Nombre de la tarea</label>
+				<input type="text" id="nombreTareaInput">
+				<label for="plazoTareaInput">Plazo de realización</label>
+				<input type="date" id="plazoTareaInput">
+				<label for="descripcionTarea">Descripción</label>
+				<textarea id="descripcionTarea" class="textAreaInput"></textarea><br>
+				<label for="selectResponsable">Asignar responsable</label><br>
+				<select class="responsableSelect" id="selectResponsable">
+					<option>--Seleccione un empleado--</option>
+					<option>Juan Rios</option>
+					<option>Joaquin Villagra</option>
+				</select><br>
+				<input type="button" class="boton" id="btn-agregar" value="Agregar Tarea">
+			</form>
+		</div>
+	</div>
+ 
+	<div class="tareas">
+		<div class="wrap">
+			<ul class="lista" id="lista">
+				<li>
+					<a href="#">Adjuntar facturas periodo 2020.</a>
+					<label>10/11/2020</label><br>
+					<label>Facturas desde abril a la fecha.</label><br>
+					<label>Mauricio Serrano</label><br>
+				</li>
+				<li>
+					<a href="#">Realizar cotizacion a empresa Z.</a>
+					<label>28/10/2020</label><br>
+					<label>Empresa requiere cableado de red completo.</label><br>
+					<label>Alejandro Barros</label><br>
+				</li>
+				<li>
+					<a href="#">Arrendar camioneta para visita en terreno.</a>
+					<label>25/10/2020</label><br>
+					<label>La camioneta debe ser doble cabina y 4x4.</label><br>
+					<label>Mauricio Serrano</label><br>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript" src="{% static 'core/js/jefatura.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+ 
+body {
+	background: #FAFAFA;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 16px;
+}
+ 
+.wrap {
+	margin: auto;
+	max-width: 800px;
+	width: 90%;
+}
+
+.principal {
+	background: seagreen;
+	border-top: 60px solid seagreen;
+	color: #fff;
+	padding: 50px 0;
+	width: 100%;
+}
+ 
+.principal .formulario {
+	color: #212121;
+	text-align: center;
+}
+
+/* INPUTS */
+.principal .formulario input[type=text] {
+	margin-bottom: 20px;
+	padding: 10px;
+	width: 100%;
+	border: 2px solid whitesmoke;
+}
+
+.principal .formulario input[type=date]{
+	margin-bottom: 20px;
+	padding: 10px;
+	width: 100%;
+	border: 2px solid whitesmoke;
+	cursor: pointer;
+}
+
+.responsableSelect {
+    /* Select Reset */
+    border: 2px solid whitesmoke;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    margin: 0;
+    display: block;
+	width: 100%;
+	cursor: pointer;
+    
+    /* custom select appearance */  
+    padding: 12px 55px 15px 15px;
+    font-size: 14px;
+  }
+
+.textAreaInput {
+	float:left;
+	width: 100%;
+	min-height: 200px;
+	outline: none;
+	resize: none;
+	border: 2px solid whitesmoke;
+	margin-bottom: 20px;
+  }
+
+.principal .formulario input[type=text].error {
+	border: 3px solid #D32F2F;
+	color: red;
+}
+
+/* LABEL INPUTS */
+.principal .formulario label{
+	color: whitesmoke;
+	font-size: x-large;
+	font-family: Helvetica;
+}
+
+/* BOTON */ 
+.principal .formulario .boton {
+	background: none;
+	border: 2px solid #38d39fd0;
+	color: #fff;
+	display: inline-block;
+	font-size: 16px;
+	padding: 15px;
+	margin-top: 30px;
+}
+ 
+.principal .formulario .boton:hover {
+	border: 2px solid #fff;
+}
+ 
+/* LISTA DE TAREAS */
+.tareas .lista {
+	list-style: none;
+}
+ 
+.tareas .lista li {
+	border-bottom: 1px solid #B6B6B6;
+}
+ 
+.tareas .lista li a {
+	color: #212121;
+	display: block;
+	padding: 20px 0;
+	text-decoration: none;
+	font-size: x-large;
+}
+ 
+.tareas .lista li a:hover {
+	text-decoration: line-through;
+	color: red;
+}
+
+.tareas label{
+	font-size: larger;
+}
