@@ -21,34 +21,34 @@
 				<label for="selectResponsable">Asignar responsable</label><br>
 				<select class="responsableSelect" id="selectResponsable">
 					<option>--Seleccione un empleado--</option>
-					<option>Juan Rios</option>
-					<option>Joaquin Villagra</option>
+					{% for n in empleados %} <!--Abrimos un bloque for de Django usando la variable enviada desde Views-->
+					<option value="{{n.0}}">{{n.1}}</option>
+					{% endfor %}
 				</select><br>
 				<input type="button" class="boton" id="btn-agregar" value="Agregar Tarea">
 			</form>
 		</div>
 	</div>
- 
 	<div class="tareas">
 		<div class="wrap">
 			<ul class="lista" id="lista">
 				<li>
 					<a href="#">Adjuntar facturas periodo 2020.</a>
-					<label>10/11/2020</label><br>
 					<label>Facturas desde abril a la fecha.</label><br>
 					<label>Mauricio Serrano</label><br>
+					<label>10-11-020</label><br>
 				</li>
 				<li>
 					<a href="#">Realizar cotizacion a empresa Z.</a>
-					<label>28/10/2020</label><br>
 					<label>Empresa requiere cableado de red completo.</label><br>
 					<label>Alejandro Barros</label><br>
+					<label>28-10-2020</label><br>
 				</li>
 				<li>
 					<a href="#">Arrendar camioneta para visita en terreno.</a>
-					<label>25/10/2020</label><br>
 					<label>La camioneta debe ser doble cabina y 4x4.</label><br>
 					<label>Mauricio Serrano</label><br>
+					<label>25-10-2020</label><br>
 				</li>
 			</ul>
 		</div>

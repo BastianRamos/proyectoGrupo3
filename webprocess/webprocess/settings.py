@@ -78,15 +78,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/xe',
-        'USER': 'c##process',
+        'USER': 'c##duoc1',
         'PASSWORD': '1234',
         'TEST': {
             'USER': 'default_test',
             'TBLSPACE': 'default_test_tbls',
             'TBLSPACE_TMP': 'default_test_tbls_tmp',
         },
-    },    
-} 
+    },
+}
 
 
 # Password validation

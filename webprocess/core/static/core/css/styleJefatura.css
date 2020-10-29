@@ -1,3 +1,4 @@
+/*GENERAL <-----------------------------------------------------*/
 * {
 	margin: 0;
 	padding: 0;
@@ -5,13 +6,13 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
- 
+
 body {
 	background: #FAFAFA;
 	font-family: arial, helvetica, sans-serif;
 	font-size: 16px;
 }
- 
+
 .wrap {
 	margin: auto;
 	max-width: 800px;
@@ -25,13 +26,13 @@ body {
 	padding: 50px 0;
 	width: 100%;
 }
- 
+
 .principal .formulario {
 	color: #212121;
 	text-align: center;
 }
 
-/* INPUTS */
+/*INPUTS <-------------------------------------------------------------*/
 .principal .formulario input[type=text] {
 	margin-bottom: 20px;
 	padding: 10px;
@@ -48,7 +49,6 @@ body {
 }
 
 .responsableSelect {
-    /* Select Reset */
     border: 2px solid whitesmoke;
     outline: none;
     -webkit-appearance: none;
@@ -59,11 +59,9 @@ body {
     display: block;
 	width: 100%;
 	cursor: pointer;
-    
-    /* custom select appearance */  
     padding: 12px 55px 15px 15px;
     font-size: 14px;
-  }
+}
 
 .textAreaInput {
 	float:left;
@@ -73,21 +71,21 @@ body {
 	resize: none;
 	border: 2px solid whitesmoke;
 	margin-bottom: 20px;
-  }
-
-.principal .formulario input[type=text].error {
-	border: 3px solid #D32F2F;
-	color: red;
 }
 
-/* LABEL INPUTS */
-.principal .formulario label{
+.principal .formulario label {
 	color: whitesmoke;
 	font-size: x-large;
 	font-family: Helvetica;
 }
 
-/* BOTON */ 
+/*ERROR <---------------------------------------------------------*/
+.principal .formulario input[type=text].error {
+	border: 3px solid #D32F2F;
+	color: red;
+}
+
+/*BOTON <-------------------------------------------------------*/
 .principal .formulario .boton {
 	background: none;
 	border: 2px solid #38d39fd0;
@@ -97,20 +95,20 @@ body {
 	padding: 15px;
 	margin-top: 30px;
 }
- 
+
 .principal .formulario .boton:hover {
 	border: 2px solid #fff;
 }
- 
-/* LISTA DE TAREAS */
+
+/*LISTAS <--------------------------------------------------------*/
 .tareas .lista {
 	list-style: none;
 }
- 
+
 .tareas .lista li {
 	border-bottom: 1px solid #B6B6B6;
 }
- 
+
 .tareas .lista li a {
 	color: #212121;
 	display: block;
@@ -118,12 +116,13 @@ body {
 	text-decoration: none;
 	font-size: x-large;
 }
- 
+
 .tareas .lista li a:hover {
 	text-decoration: line-through;
 	color: red;
 }
 
+/*Label que usamos con la funcion agregar*/
 .tareas label{
 	font-size: larger;
 }
