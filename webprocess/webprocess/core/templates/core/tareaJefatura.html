@@ -1,0 +1,59 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'core/js/tareaJefatura.js' %} "></script>
+{% endblock js %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'core/css/tareaJefatura.css' %}">
+{% endblock css %}
+
+{% block contenido %}
+	<div class="principal">
+		<div class="wrap">
+			<form class="formulario" action="">
+				<label for="nombreTareaInput" id="nombreTarea">Nombre de la tarea</label>
+				<input type="text" id="nombreTareaInput" name="nombreTarea">
+				<label for="plazoTareaInput">Plazo de realización</label>
+				<input type="date" id="plazoTareaInput" name="plazoTarea">
+				<label for="descripcionTarea">Descripción</label>
+				<textarea id="descripcionTarea" class="textAreaInput" name="descripcionTarea"></textarea><br>
+				<label for="selectResponsable">Asignar responsable</label><br>
+				<select class="responsableSelect" id="selectResponsable" name="responsableTarea">
+					<option>--Seleccione un empleado--</option>
+					{% for n in empleados %} <!--Abrimos un bloque for de Django usando la variable enviada desde Views-->
+					<option value="{{n.1}}">{{n.1}}</option>
+					{% endfor %}
+				</select><br>
+				<input type="button" class="boton" id="btn-agregar" value="Agregar Tarea">
+			</form>
+			{{mensaje}} <!--Mensaje sobre resultado de agregar tarea-->
+		</div>
+	</div>
+	<div class="tareas">
+		<div class="wrap">
+			<ul class="lista" id="lista">
+				<li>
+					<a href="#">Adjuntar facturas periodo 2020.</a>
+					<label>Facturas desde abril a la fecha.</label><br>
+					<label>Mauricio Serrano</label><br>
+					<label>10-11-020</label><br>
+				</li>
+				<li>
+					<a href="#">Realizar cotizacion a empresa Z.</a>
+					<label>Empresa requiere cableado de red completo.</label><br>
+					<label>Alejandro Barros</label><br>
+					<label>28-10-2020</label><br>
+				</li>
+				<li>
+					<a href="#">Arrendar camioneta para visita en terreno.</a>
+					<label>La camioneta debe ser doble cabina y 4x4.</label><br>
+					<label>Mauricio Serrano</label><br>
+					<label>25-10-2020</label><br>
+				</li>
+			</ul>
+		</div>
+	</div>
+{% endblock contenido %}

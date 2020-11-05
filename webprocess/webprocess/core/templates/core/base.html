@@ -1,0 +1,48 @@
+<html>
+<head>
+    {% load static %}
+    {% block css %}
+    {% endblock css %}
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    <title>Resumen</title>
+</head>
+<body>
+    <nav class="main-menu" id="navbar">
+        <ul>
+            <li>
+                <a href="{% url 'homeJefatura' %}">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        Inicio
+                    </span>
+                </a>
+            </li>
+            <li class="has-subnav">
+                <a href="{% url 'tareaJefatura' %}">
+                    <i class="fa fa-laptop fa-2x"></i>
+                    <span class="nav-text">
+                        Gestión de tareas
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <ul class="logout">
+            <li>
+                <a href="{% url 'inicio' %}">
+                    <i class="fa fa-power-off fa-2x"></i>
+                    <span class="nav-text">
+                        Cerrar Sesión
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="area">
+        {% block contenido %} <!--Creamos un bloque para el contenido que podremos sobre escribir usando el template base-->
+        {% endblock contenido %}
+    </div>
+    {% block js %}
+    {% endblock js %}
+    <script type="text/javascript" src="{% static 'core/js/base.js' %}"></script>
+</body>
+</html>
