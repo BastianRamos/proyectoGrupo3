@@ -1,58 +1,72 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-mx">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	{% load static %}
-	<link rel="stylesheet" href="{% static 'core/css/styleJefatura.css' %}">
-	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
-	<title>Panel de Tareas</title>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/inicioJefatura.css' %}">
+    <title>Resumen de Tareas</title>
 </head>
 <body>
-	<div class="principal">
-		<div class="wrap">
-			<form class="formulario" action="">
-				<label for="nombreTareaInput" id="nombreTarea">Nombre de la tarea</label>
-				<input type="text" id="nombreTareaInput">
-				<label for="plazoTareaInput">Plazo de realización</label>
-				<input type="date" id="plazoTareaInput">
-				<label for="descripcionTarea">Descripción</label>
-				<textarea id="descripcionTarea" class="textAreaInput"></textarea><br>
-				<label for="selectResponsable">Asignar responsable</label><br>
-				<select class="responsableSelect" id="selectResponsable">
-					<option>--Seleccione un empleado--</option>
-					{% for n in empleados %} <!--Abrimos un bloque for de Django usando la variable enviada desde Views-->
-					<option value="{{n.0}}">{{n.1}}</option>
-					{% endfor %}
-				</select><br>
-				<input type="button" class="boton" id="btn-agregar" value="Agregar Tarea">
-			</form>
-		</div>
-	</div>
-	<div class="tareas">
-		<div class="wrap">
-			<ul class="lista" id="lista">
-				<li>
-					<a href="#">Adjuntar facturas periodo 2020.</a>
-					<label>Facturas desde abril a la fecha.</label><br>
-					<label>Mauricio Serrano</label><br>
-					<label>10-11-020</label><br>
-				</li>
-				<li>
-					<a href="#">Realizar cotizacion a empresa Z.</a>
-					<label>Empresa requiere cableado de red completo.</label><br>
-					<label>Alejandro Barros</label><br>
-					<label>28-10-2020</label><br>
-				</li>
-				<li>
-					<a href="#">Arrendar camioneta para visita en terreno.</a>
-					<label>La camioneta debe ser doble cabina y 4x4.</label><br>
-					<label>Mauricio Serrano</label><br>
-					<label>25-10-2020</label><br>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<script type="text/javascript" src="{% static 'core/js/jefatura.js' %}"></script>
+    <!--Menu de navegacion-->
+    <ul class="menu">
+        <li><a class="activo" href="{% url 'inicioJefatura' %}">Inicio</a></li>
+        <li><a href="{% url 'tareaJefatura' %}">Ingresar Tarea</a></li>
+        <li class="derecho"><a href="#">{{ user.username }}</a></li>
+        <li class="derecho"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+    </ul>
+    <!--Porcentajes de avance de tareas (Error al leer archivo externo de CSS ?)-->
+    <div class="contenedor" style="display: flex; align-items: center; font-family: Calibri;">
+        <div style="margin: 0 auto; text-align: center; font-size: 200%;">
+            {% if tareas %}
+                <h1>{{ tareas.count }}</h1><!--Cantidad de tareas totales-->
+            {% else %}
+                <h1>0</h1>
+            {% endif %}
+            <p>Total de Tareas</p>
+        </div>
+        <div style="margin: 0 auto; text-align: center; font-size: 150%;" >
+            {% if tareas %}
+                <h1>{{ tareas_completadas.count }}</h1><!--Catidad de tareas completadas-->
+            {% else %}
+            <h1>0%</h1>
+            {% endif %}
+            <p>Tareas Completadas</p>
+        </div>
+        <div style="margin: 0 auto; text-align: center; font-size: 150%;">
+            <h1>{{ tareas_desarrollo.count }}</h1><!--Cantidad de tareas en desarrollo-->
+            <p>Tareas en Desarrollo</p>
+        </div>
+        <div style="margin: 0 auto; text-align: center; font-size: 150%; color:red;">
+            <h1>{{ tareas_atrasadas.count }}</h1><!--Cantidad de tareas atrasadas-->
+            <p>Tareas Atrasadas</p>
+        </div>
+    </div>
+    <table style="font-size: 120%;">
+        <tr>
+            <th>Tarea</th>
+            <th>Estado</th>
+            <th>Fecha Límite</th>
+            <th>Responsable</th>
+        </tr>
+        {% if tareas %}
+            {% for tarea in tareas %}
+            <tr><!--Llenamos la tabla con informacion de la base de datos-->
+                <td>{{ tarea.nombre }}</td>
+                {% if tarea.estado == 1 %}<!--Segun el estado de tarea cambia la palabra y color-->
+                    <td style="background-color: lightgoldenrodyellow;">En Desarrollo</td>
+                {% elif tarea.estado == 2 %}
+                    <td style="background-color: lightgreen;">Completada</td>
+                {% else %}
+                    <td style="background-color: lightcoral;">Atrasada</td>
+                {% endif %}
+                <td>{{ tarea.plazo }}</td>
+                <td>{{ tarea.responsable }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <h2 style="color: red;">No se han encontrado tareas ingresadas en el sistema...</h2>
+        {% endif %}
+    </table>
 </body>
 </html>

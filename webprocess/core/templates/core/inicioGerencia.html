@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen General</title>
+</head>
+<body>
+    <ul class="menu">
+        <li><a class="activo" href="{% url 'inicioJefatura' %}">Inicio</a></li>
+        <li><a href="{% url 'tareaJefatura' %}">Ingresar Tarea</a></li>
+        <li class="derecho"><a href="#">{{ user.username }}</a></li>
+        <li class="derecho"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+    </ul>
+</body>
+</html>

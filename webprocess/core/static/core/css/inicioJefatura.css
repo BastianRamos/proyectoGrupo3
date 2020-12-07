@@ -1,0 +1,69 @@
+
+body {
+    margin: 0;
+}
+
+/* NAVBAR MENÚ
+************************************************************/
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: darkslategray;
+}
+
+ul.menu li {
+    float: left;
+}
+
+ul.menu li a {
+    display: block;
+    color: whitesmoke;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: Calibri;
+    font-size: 130%;
+}
+
+/* Objetos seleccionados del nav*/
+ul.menu li a:hover:not(.activo) {
+    background-color: darkseagreen;
+    color: whitesmoke;
+}
+
+ul.menu li a.activo {
+    background-color: darkseagreen;
+}
+
+ul.menu li.derecho {
+    float: right;
+}
+
+@media screen and (max-width: 600px) {
+    ul.menu li.derecho,
+    ul.menu li {
+        float: none;
+    }
+}
+
+/* TABLA
+***********************************************************/
+table {
+    width: 100%;
+}
+
+th {
+    font-size: 120%;
+    background-color: cadetblue;
+    color: whitesmoke;
+    font-family: Calibri;
+    padding: 10px;
+}
+
+td {
+    font-family: Calibri;
+    background-color: gainsboro;
+    padding: 5px;
+}
