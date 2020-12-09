@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/inicioSubordinado.css' %}">
+    <title>Información de Tareas</title>
+</head>
+<body>
+    <ul class="menu">
+        <li><a class="activo" href="{% url 'inicioJefatura' %}">Inicio</a></li>
+        <li class="derecho"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+        <li class="derecho"><a href="#"><img src="{% static 'core/img/campana.png' %}"> Notificación</a></li>
+        {% if user.is_authenticated %}
+            <li class="derecho"><a href="#"><img src="{% static 'core/img/usuario.png' %}"> {{ user.username }}</a></li>
+        {% endif %}
+    </ul>
+    <table>
+        <tr>
+            <th>Tarea</th>
+            <th>Fecha Límite</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+        </tr>
+        {% for tarea in tareas_usuario %}
+            <tr>
+                {% if tarea.3 == 1 %}
+                    <td>{{ tarea.0 }}</td>
+                    <td>{{ tarea.1 }}</td>
+                    <td>{{ tarea.2 }}</td>
+                    <td id="proceso">En Proceso</td>
+                {% elif tarea.3 == 2 %}
+                    <td>{{ tarea.0 }}</td>
+                    <td>{{ tarea.1 }}</td>
+                    <td>{{ tarea.2 }}</td>
+                    <td id="completada">Completada</td>
+                {% else %}
+                    <td>{{ tarea.0 }}</td>
+                    <td>{{ tarea.1 }}</td>
+                    <td>{{ tarea.2 }}</td>
+                    <td id="atrasada">Atrasada</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        <!--IMPLEMENTAR JQUERY PARA AGREGAR FILTROS A LAS CASILLAS DE LA TABLA-->
+    </table>
+</body>
+</html>

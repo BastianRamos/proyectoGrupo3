@@ -4,14 +4,75 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/inicioGerencia.css' %}">
     <title>Resumen General</title>
 </head>
 <body>
     <ul class="menu">
         <li><a class="activo" href="{% url 'inicioJefatura' %}">Inicio</a></li>
-        <li><a href="{% url 'tareaJefatura' %}">Ingresar Tarea</a></li>
-        <li class="derecho"><a href="#">{{ user.username }}</a></li>
         <li class="derecho"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+        {% if user.is_authenticated %}
+            <li class="derecho"><a href="#"><img src="{% static 'core/img/usuario.png' %}"> {{ user.username }}</a></li>
+        {% endif %}
     </ul>
+    <div class="contenedor">
+        <div id="total-tareas" class="caja">
+            {% if tareas %}
+                <h1>{{ tareas.count }}</h1><!--Cantidad de tareas totales-->
+            {% else %}
+                <h1>0</h1>
+            {% endif %}
+            <p>Total de Tareas</p>
+        </div>
+        <div id="tareas-desarrollo" class="caja">
+            {% if tareas %}
+                <h1>{{ desarrolladas }}%</h1><!--Cantidad de tareas en desarrollo-->
+            {% else %}
+                <h1>0</h1>
+            {% endif %}
+            <p>En Desarrollo</p>
+        </div>
+        <div id="tareas-completadas" class="caja">
+            {% if tareas %}
+                <h1>{{ completadas }}%</h1><!--Catidad de tareas completadas-->
+            {% else %}
+                <h1>0%</h1>
+            {% endif %}
+            <p>Completadas</p>
+        </div>
+        <div id="tareas-atrasadas" class="caja">
+            {% if tareas %}
+                <h1>{{ atrasadas }}%</h1><!--Cantidad de tareas atrasadas-->
+            {% else %}
+                <h1>0</h1>
+            {% endif %}
+            <p>Atrasadas</p>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <th>TÍTULO DE TAREA</th>
+            <th>UNIDAD INTERNA</th>
+            <th>ESTADO DE TAREA</th>
+        </tr>
+        {% for tarea in tareas_unidad %}
+            <tr>
+                {% if tarea.2 == 1 %}
+                    <td id="proceso">{{ tarea.0 }}</td>
+                    <td id="proceso">{{ tarea.1 }}</td>
+                    <td id="proceso">En Proceso</td>
+                {% elif tarea.2 == 2 %}
+                    <td id="completada">{{ tarea.0 }}</td>
+                    <td id="completada">{{ tarea.1 }}</td>
+                    <td id="completada">Completada</td>
+                {% else %}
+                    <td id="atrasada">{{ tarea.0 }}</td>
+                    <td id="atrasada">{{ tarea.1 }}</td>
+                    <td id="atrasada">Atrasada</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        <!--IMPLEMENTAR JQUERY PARA AGREGAR FILTROS A LAS CASILLAS DE LA TABLA-->
+    </table>
 </body>
 </html>

@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),# Gestion de cuentas de Django para login, logout y otros...
 ]
 
 admin.site.site_header = "ADMINISTRACIÓN PROCESS S.A"

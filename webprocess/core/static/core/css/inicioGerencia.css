@@ -1,0 +1,157 @@
+body {
+    margin: 0;
+    background-color: lightgrey;
+}
+
+/* NAVBAR MENÚ
+************************************************************/
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: darkcyan;
+}
+
+ul.menu li {
+    float: left;
+}
+
+ul.menu li a {
+    display: block;
+    color: whitesmoke;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: Calibri;
+    font-size: 130%;
+}
+
+/* Objetos seleccionados del nav*/
+ul.menu li a:hover:not(.activo) {
+    background-color: darkseagreen;
+    color: whitesmoke;
+}
+
+ul.menu li a.activo {
+    background-color: darkseagreen;
+}
+
+ul.menu li.derecho {
+    float: right;
+}
+
+@media screen and (max-width: 600px) {
+    ul.menu li.derecho,
+    ul.menu li {
+        float: none;
+    }
+}
+
+/*Porcentajes resumen de tareas
+***********************************************************/
+.contenedor {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+    font-family: Cambria;
+    background-color: lightblue;
+}
+
+.caja {
+    width: 20%;
+    height: 300px;
+    margin: 20px;
+    box-sizing:border-box;
+    font-size: 35px;
+}
+
+#total-tareas {
+    text-align: center;
+    color: whitesmoke;
+    background-color: dodgerblue;
+    border-radius: 180px;
+}
+
+#tareas-completadas {
+    text-align: center;
+    background-color: lightgreen;
+    color: dimgray;
+    border-radius: 12px;
+}
+
+#tareas-desarrollo {
+    text-align: center;
+    background-color: lightgoldenrodyellow;
+    color: dimgray;
+    border-radius: 12px;
+}
+
+#tareas-atrasadas {
+    text-align: center;
+    background-color: lightcoral;
+    color: dimgray;
+    border-radius: 12px;
+}
+
+@media screen and (max-width:1200px) {
+    .caja {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .caja {
+        width: 65%;
+    }
+}
+
+/* TABLA
+***********************************************************/
+table {
+    width: 95%;
+    margin-top: 15px;
+    margin-left: 40px;
+}
+
+th {
+    font-size: 130%;
+    background-color: darkslategray;
+    color: whitesmoke;
+    font-family: Segoe UI;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+td {
+    font-family: Segoe UI;
+    background-color: whitesmoke;
+    padding: 5px;
+}
+
+#proceso {
+    text-align: center;
+    font-size: 120%;
+    border: 4px solid gold;
+    border-radius: 20px;
+    background-color: lightgoldenrodyellow;
+}
+
+#completada {
+    text-align: center;
+    font-size: 120%;
+    border: 4px solid greenyellow;
+    border-radius: 20px;
+    background-color: lightgreen;
+}
+
+#atrasada {
+    text-align: center;
+    font-size: 120%;
+    border: 4px solid tomato;
+    border-radius: 20px;
+    background-color: lightcoral;
+}
